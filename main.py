@@ -6,6 +6,7 @@ It echoes any incoming text messages.
 import logging
 
 from aiogram import Bot, Dispatcher, executor, types
+from aiogram.dispatcher.filters import CommandStart
 
 from func import pogoda
 from keyboard import menu, back
@@ -20,7 +21,7 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 
-@dp.message_handler(commands=['start', 'help'])
+@dp.message_handler(CommandStart())
 async def send_welcome(message: types.Message):
     await message.reply("Assalomu alaykum OB-HAVO botga hush kelibsiz!", reply_markup=menu())
 
